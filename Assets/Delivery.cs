@@ -6,7 +6,9 @@ using UnityEngine;
 public class Delivery : MonoBehaviour
 {
     [SerializeField] float destroyDelay = 0.5f;
-    [SerializeField] Color32 hasPackageColor = new Color32(1, 1, 1, 1);
+    [SerializeField] Color32 redPackageColor = new Color32(1, 1, 1, 1);
+    [SerializeField] Color32 greenPackageColor = new Color32(1, 1, 1, 1);
+    [SerializeField] Color32 bluePackageColor = new Color32(1, 1, 1, 1);
     [SerializeField] Color32 noPackageColor = new Color32(1, 1, 1, 1);
 
     bool hasPackage;
@@ -19,22 +21,48 @@ public class Delivery : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("ya crushed!");
+        Debug.Log("ya crashed!");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Package" && !hasPackage)
+        // Logic for different color package pickups
+        if (other.tag == "Red Package" && !hasPackage)
         {
-            Debug.Log("Package Picked Up");
+            Debug.Log("Red Package Picked Up");
             hasPackage = true;
             Debug.Log(hasPackage);
             Destroy(other.gameObject, destroyDelay);
-            spriteRenderer.color = hasPackageColor;
-        }
-        else if (other.tag == "Customer" && hasPackage)
+            spriteRenderer.color = redPackageColor;
+        } else if (other.tag == "Green Package" && !hasPackage) {
+            Debug.Log("Green Package Picked Up");
+            hasPackage = true;
+            Debug.Log(hasPackage);
+            Destroy(other.gameObject, destroyDelay);
+            spriteRenderer.color = greenPackageColor;
+        } else if (other.tag == "Blue Package" && !hasPackage) {
+            Debug.Log("Blue Package Picked Up");
+            hasPackage = true;
+            Debug.Log(hasPackage);
+            Destroy(other.gameObject, destroyDelay);
+            spriteRenderer.color = bluePackageColor;
+        } 
+
+        if (other.tag == "Red Customer" && hasPackage && spriteRenderer.color == redPackageColor)
         {
-            Debug.Log("Package Delivered");
+            Debug.Log("Red Package Delivered");
+            hasPackage = false;
+            Debug.Log(hasPackage);
+            spriteRenderer.color = noPackageColor;
+        } else if (other.tag == "Green Customer" && hasPackage && spriteRenderer.color == greenPackageColor)
+        {
+            Debug.Log("Green Package Delivered");
+            hasPackage = false;
+            Debug.Log(hasPackage);
+            spriteRenderer.color = noPackageColor;
+        } else if (other.tag == "Blue Customer" && hasPackage && spriteRenderer.color == bluePackageColor)
+        {
+            Debug.Log("Blue Package Delivered");
             hasPackage = false;
             Debug.Log(hasPackage);
             spriteRenderer.color = noPackageColor;

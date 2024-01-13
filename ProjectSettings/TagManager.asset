@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Package
+  - Customer
+  - Boost
+  - Obstacle
   layers:
   - Default
   - TransparentFX
