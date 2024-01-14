@@ -4,10 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Package
   - Customer
   - Boost
   - Obstacle
+  - Red Package
+  - Blue Package
+  - Green Package
+  - Red Customer
+  - Blue Customer
+  - Green Customer
   layers:
   - Default
   - TransparentFX

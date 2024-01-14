@@ -53,18 +53,21 @@ public class Delivery : MonoBehaviour
             Debug.Log("Red Package Delivered");
             hasPackage = false;
             Debug.Log(hasPackage);
+            Destroy(other.gameObject, destroyDelay);
             spriteRenderer.color = noPackageColor;
         } else if (other.tag == "Green Customer" && hasPackage && spriteRenderer.color == greenPackageColor)
         {
             Debug.Log("Green Package Delivered");
             hasPackage = false;
             Debug.Log(hasPackage);
+            Destroy(other.gameObject, destroyDelay);
             spriteRenderer.color = noPackageColor;
         } else if (other.tag == "Blue Customer" && hasPackage && spriteRenderer.color == bluePackageColor)
         {
             Debug.Log("Blue Package Delivered");
             hasPackage = false;
             Debug.Log(hasPackage);
+            Destroy(other.gameObject, destroyDelay);
             spriteRenderer.color = noPackageColor;
         }
     }
